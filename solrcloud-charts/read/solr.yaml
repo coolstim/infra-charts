@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-solr-read
+---
+apiVersion: solr.apache.org/v1beta1
+kind: SolrCloud
+metadata:
+  name: my-read
+  namespace: my-solr-read
+spec:
+  busyBoxImage:
+    repository: library/busybox
+    tag: 1.28.0-glibc
+  customSolrKubeOptions: {}
+  dataStorage:
+    ephemeral:
+      emptyDir:
+        sizeLimit: 20Gi
+  replicas: 3
+  solrAddressability:
+    commonServicePort: 80
+    podPort: 8983
+  solrImage:
+    repository: solr
+    tag: 9.1.1
+  solrJavaMem: '-Xms1g -Xmx2g'
+  solrLogLevel: INFO
+  updateStrategy:
+    managed: {}
+    method: Managed
+  zookeeperRef:
+    provided:
+      chroot: /
+      config: {}
+      image:
+        pullPolicy: IfNotPresent
+        repository: pravega/zookeeper
+      replicas: 3
+      zookeeperPodPolicy:
+        resources: {}
