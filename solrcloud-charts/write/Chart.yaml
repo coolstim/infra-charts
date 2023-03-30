@@ -1,0 +1,4 @@
+apiVersion: v1
+description: SolrCloud write environment
+name: SolrCloud-write
+version: "0.1.0"
