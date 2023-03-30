@@ -1,13 +1,8 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: my-solr-write
----
 apiVersion: solr.apache.org/v1beta1
 kind: SolrCloud
 metadata:
-  name: my-write
-  namespace: my-solr-write
+  name: {{ .Values.name }}
+  namespace: {{ .Values.namespace }}
 spec:
   busyBoxImage:
     repository: library/busybox
