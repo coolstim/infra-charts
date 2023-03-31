@@ -14,23 +14,23 @@
 #         command: ["sleep", "10"]
 #       restartPolicy: Never
 #   backoffLimit: 0
-apiVersion: batch/v1
-kind: Job
-metadata:
-  name: disqover-solr-configurator
-  annotations:
-    argocd.argoproj.io/hook:  
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
-spec:
-  template:
-    spec:
-      containers:
-        - name: solr-configurator
-          image: 652646727745.dkr.ecr.us-east-1.amazonaws.com/disqoversolrbootstrapper:1.0.0
-          env:
-            - name: URL
-              value: "http://write-solr-cluster.svc.cluster.local"
-      restartPolicy: Never
-      imagePullSecrets:
-        - name: aws-registry
-  backoffLimit: 2
+# apiVersion: batch/v1
+# kind: Job
+# metadata:
+#   name: disqover-solr-configurator
+#   annotations:
+#     argocd.argoproj.io/hook:  
+#     argocd.argoproj.io/hook-delete-policy: HookSucceeded
+# spec:
+#   template:
+#     spec:
+#       containers:
+#         - name: solr-configurator
+#           image: 652646727745.dkr.ecr.us-east-1.amazonaws.com/disqoversolrbootstrapper:1.0.0
+#           env:
+#             - name: URL
+#               value: "http://write-solr-cluster.svc.cluster.local"
+#       restartPolicy: Never
+#       imagePullSecrets:
+#         - name: aws-registry
+#   backoffLimit: 2
