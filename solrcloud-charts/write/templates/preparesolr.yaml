@@ -25,9 +25,9 @@ spec:
   template:
     spec:
       containers:
-      - name: solr-configurator
-        image: 652646727745.dkr.ecr.us-east-1.amazonaws.com/disqoversolrbootstrapper:1.0.0
+        - name: solr-configurator
+          image: 652646727745.dkr.ecr.us-east-1.amazonaws.com/disqoversolrbootstrapper:1.0.0
       restartPolicy: Never
       imagePullSecrets:
-      - name: aws-registry
+        - name: aws-registry
   backoffLimit: 2
