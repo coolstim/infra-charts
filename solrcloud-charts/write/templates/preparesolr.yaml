@@ -17,7 +17,6 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  generateName: solr-config-collection-creator
   annotations:
     argocd.argoproj.io/hook:  
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
