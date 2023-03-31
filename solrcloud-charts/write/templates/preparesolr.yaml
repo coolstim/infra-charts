@@ -27,6 +27,9 @@ spec:
       containers:
         - name: solr-configurator
           image: 652646727745.dkr.ecr.us-east-1.amazonaws.com/disqoversolrbootstrapper:1.0.0
+          env:
+            - name: URL
+              value: "http://write-solr-cluster.svc.cluster.local"
       restartPolicy: Never
       imagePullSecrets:
         - name: aws-registry
