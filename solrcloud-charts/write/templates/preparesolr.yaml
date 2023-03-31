@@ -20,7 +20,6 @@ metadata:
   name: disqover-solr-configurator
   annotations:
     argocd.argoproj.io/hook:  PostSync
-    argocd.argoproj.io/sync-wave: "999"
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   template:
@@ -34,4 +33,4 @@ spec:
       restartPolicy: Never
       imagePullSecrets:
         - name: aws-registry
-  backoffLimit: 2
+  backoffLimit: 0
