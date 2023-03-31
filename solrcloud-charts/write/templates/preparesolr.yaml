@@ -1,7 +1,23 @@
+# apiVersion: batch/v1
+# kind: Job
+# metadata:
+#   name: after
+#   annotations:
+#     argocd.argoproj.io/hook: PostSync
+#     # argocd.argoproj.io/hook-delete-policy: HookSucceeded
+# spec:
+#   template:
+#     spec:
+#       containers:
+#       - name: sleep
+#         image: alpine:latest
+#         command: ["sleep", "10"]
+#       restartPolicy: Never
+#   backoffLimit: 0
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: after
+  generateName: solr-config-collection-creator
   annotations:
     argocd.argoproj.io/hook: PostSync
     # argocd.argoproj.io/hook-delete-policy: HookSucceeded
@@ -9,23 +25,7 @@ spec:
   template:
     spec:
       containers:
-      - name: sleep
-        image: alpine:latest
-        command: ["sleep", "10"]
+      - name: solr-configurator
+        image: 652646727745.dkr.ecr.us-east-1.amazonaws.com/disqoversolrbootstrapper:1.0.0
       restartPolicy: Never
-  backoffLimit: 0
-# apiVersion: batch/v1
-# kind: Job
-# metadata:
-#   generateName: solr-config-collection-creator
-#   annotations:
-#     argocd.argoproj.io/hook: PostSync
-#     argocd.argoproj.io/hook-delete-policy: HookSucceeded
-# spec:
-#   template:
-#     spec:
-#       containers:
-#       - name: solr-configurator
-#         image: 652646727745.dkr.ecr.us-east-1.amazonaws.com/disqoversolrbootstrapper:1.0.0
-#       restartPolicy: Never
-#   backoffLimit: 2
+  backoffLimit: 2
