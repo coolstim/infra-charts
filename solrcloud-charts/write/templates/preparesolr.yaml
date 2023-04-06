@@ -15,6 +15,8 @@ spec:
             - name: URL
               value: "http://{{ .Values.name }}.{{ .Values.namespace }}.svc.cluster.local"
       restartPolicy: Never
+      {{- if .Values.imagePullSecrets.enabled }}
       imagePullSecrets:
-        - name: aws-registry
+        - name: {{ .Values.imagePullSecrets.name }}
+      {{- end }}
   backoffLimit: 0

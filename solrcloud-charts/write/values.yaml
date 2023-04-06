@@ -1,3 +1,6 @@
 name: solr-write-cluster
 namespace: solr-write-namespace
 configurationimage: 652646727745.dkr.ecr.us-east-1.amazonaws.com/disqoversolrbootstrapper:1.0.0
+imagePullSecrets:
+  enabled: true
+  name: aws-registry
